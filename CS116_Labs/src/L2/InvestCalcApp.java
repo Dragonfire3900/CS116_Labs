@@ -1,6 +1,7 @@
 package L2;
 
 public class InvestCalcApp {
-//uyguygyugyufuyf
-	int x = 1;
+	public void main(string[] args) {
+		system.out.print("test");
+	}
 }
