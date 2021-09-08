@@ -56,6 +56,6 @@ public class Runner {
 	  
 	  public double percentageSlower() {
 	  // ADD CODE HERE TO CALCULATE THE PERCENTAGE SLOWER THAN THE WORLD RECORD [2 pt]
-		  return ((double) this.marathonTimeSeconds / Runner.WORLD_RECORD_TIME_SECONDS) - 1.0D;
+		  return 100 * (((double) this.marathonTimeSeconds / Runner.WORLD_RECORD_TIME_SECONDS) - 1.0D);
 	  }
 	}

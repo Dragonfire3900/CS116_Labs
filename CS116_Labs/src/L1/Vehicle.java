@@ -88,7 +88,7 @@ public class Vehicle {
 	 * 
 	 * @return returns true if the value was successfully set and false otherwise
 	 */
-	private boolean setArrivalTime(int aT) {
+	public boolean setArrivalTime(int aT) {
 		//It's more maintainable to check for invalid time and return false than make a nested if statement
 		
 		//Case #1: Time is greater than zero
@@ -103,14 +103,14 @@ public class Vehicle {
 	 * 
 	 * @return returns true if the value was successfully set and false otherwise
 	 */
-	private boolean setTollBoothTime(int tollBoothTime) {
+	public boolean setTollBoothTime(int tollBoothTime) {
 		//It's more maintainable to check for invalid time and return false than make a nested if statement
 		
 		//Case #1: Time is greater than zero
 		if (tollBoothTime <= 0) { return false; }
 		
 		//Case #2: Toll booth time is after the arrival time
-		if (tollBoothTime > this.getArrivalTime()) { return false; }
+		if (tollBoothTime < this.getArrivalTime()) { return false; }
 		
 		//Case #3: Assuming the car already left. tollBoothTime is before leaving time
 		if (this.getLeavingTime() != 0 & this.getLeavingTime() < tollBoothTime) { return false; }
@@ -124,7 +124,7 @@ public class Vehicle {
 	 * 
 	 * @return returns true if the value was successfully set and false otherwise
 	 */
-	private boolean setLeavingTime(int leavingTime) {
+	public boolean setLeavingTime(int leavingTime) {
 		//It's more maintainable to check the negation of a valid time and return false than make a nested if statement
 		
 		//Case #1: Time is greater than zero
@@ -142,6 +142,6 @@ public class Vehicle {
 	@Override
 	public String toString() {
 		return "Vehicle [uniqueID=" + uniqueID + ", arrivalTime=" + arrivalTime + ", tollBoothTime=" + tollBoothTime
-				+ ", leavingTime=" + leavingTime + "]";
+				+ ", leavingTime=" + leavingTime + "]\n";
 	}
 }
