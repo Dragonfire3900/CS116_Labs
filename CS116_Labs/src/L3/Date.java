@@ -90,4 +90,16 @@ public class Date {
 	    else
 	      return false;
 	  }
+	  
+	  /**
+	   * Determines if a year is a leap year
+	   * @return true if the year in the date is a leap year
+	   */
+	  public boolean leapYear() {
+		  if () { return true; }
+
+		  if () { return true; }
+		  
+		  return false;
+	  }
 	}
