@@ -24,11 +24,25 @@ public class InvestCalc {
 	 *  |      Accessor Methods        |
 	 *  --------------------------------
 	 */
-	
+	public double getRate() {
+		return interestRate;
+	}
+	public double getPrincipal() {
+		return principal;
+	}
 	/*  --------------------------------
 	 *  |       Mutator Methods        |
 	 *  --------------------------------
 	 */
+	
+	public void setRate(double r) {
+		interestRate = r;
+	}
+	public void setPrincipal(double p) {
+		principal = p;
+	}
+	
+	
 	
 	public String toString() {
 		
