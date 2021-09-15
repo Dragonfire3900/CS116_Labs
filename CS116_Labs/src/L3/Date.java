@@ -52,10 +52,12 @@ public class Date {
 	  *  otherwise, sets day to 1
 	  */
 	  private void setDay( int dd )   {
-	    int [] validDays = { 0,  31, 29, 31, 30,
+	    int [] validDays = { 0,  31, 28, 31, 30,
 	                         31, 30, 31, 31, 30,
 	                         31, 30, 31 };
-	    day = ( dd >= 1 && dd <= validDays[month] ? dd : Date.DEFAULT_DAY );
+	    
+	    validDays[2] = (this.leapYear() ? 29 : 28);
+	    day = ( dd >= 1 && dd <= validDays[month] ? dd : 1 );
 	  } 
 	  /** setMonth
 	  *  @param mm new value for month
