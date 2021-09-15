@@ -73,11 +73,12 @@ public class InvestCalc {
 		return InvestCalc.Lengthterms;
 	}
 	
+
 	/*  --------------------------------
 	 *  |       Mutator Methods        |
 	 *  --------------------------------
 	 */
-	
+
 	/**
 	 * Sets the principal amount for the calculator
 	 * @param nP The new principal amount for the investment
@@ -89,7 +90,7 @@ public class InvestCalc {
 		
 		this.principal = nP;
 		return true;
-	}
+}
 	
 	/**
 	 * Sets the interest rate of this calculator
@@ -119,10 +120,15 @@ public class InvestCalc {
 		return "InvestCalc [principal= " + this.getFormattedPrincipal() + ", interestRate= " + this.getFormattedInterestRate() + "]";
 	}
 
+	/**
+	 * Calculates the future value of an investment given the year
+	 * @param year How many years the investment has been growing
+	 * @return The future value of the investment
+	 */
 	public double futureValue(int year) {
 		return this.principal * Math.pow(1 + this.interestRate, year);
 	}
-	
+		
 	public void displayTable() {
 		System.out.print("YEAR\tINTEREST RATE\tPRINCIPAL\tFUTURE VALUE\n");
 		
