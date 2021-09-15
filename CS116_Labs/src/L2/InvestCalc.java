@@ -49,7 +49,7 @@ public class InvestCalc {
 	}
 	
 	public double futureValue(int year) {
-		
+		return (principal * (Math.pow((1 + interestRate), year)));
 	}
 	
 	public void displayTable() {
