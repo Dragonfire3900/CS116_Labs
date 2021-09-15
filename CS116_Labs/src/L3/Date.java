@@ -57,7 +57,7 @@ public class Date {
 	                         31, 30, 31 };
 	    
 	    validDays[2] = (this.leapYear() ? 29 : 28);
-	    day = ( dd >= 1 && dd <= validDays[month] ? dd : 1 );
+	    day = ( dd >= 1 && dd <= validDays[month] ? dd : Date.DEFAULT_DAY );
 	  } 
 	  /** setMonth
 	  *  @param mm new value for month
