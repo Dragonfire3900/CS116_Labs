@@ -44,8 +44,8 @@ public class InvestCalc {
 	
 	
 	
-	public String toString() {
-		
+	public String toString(InvestCalc a) {
+		return "";
 	}
 	
 	public double futureValue(int year) {
