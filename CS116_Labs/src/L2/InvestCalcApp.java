@@ -43,6 +43,6 @@ public class InvestCalcApp {
 		System.out.println(value2.toString()+ "\n");
 
 // UNCOMMENT THE NEXT STATEMENT WHEN YOU ARE READY TO TEST
-//		value2.displayTable();
+		value2.displayTable();
 	}
 }
