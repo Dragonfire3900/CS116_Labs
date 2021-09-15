@@ -4,6 +4,10 @@ public class Date {
 	  private int month;
 	  private int day;
 	  private int year;
+	  
+	  static private int DEFAULT_YEAR = 2000;
+	  static private int DEFAULT_MONTH = 1;
+	  static private int DEFAULT_DAY = 1;
 
 	  /** default constructor
 	  *  sets month to 1, day to 1 and year to 2000
@@ -51,7 +55,7 @@ public class Date {
 	    int [] validDays = { 0,  31, 29, 31, 30,
 	                         31, 30, 31, 31, 30,
 	                         31, 30, 31 };
-	    day = ( dd >= 1 && dd <= validDays[month] ? dd : 1 );
+	    day = ( dd >= 1 && dd <= validDays[month] ? dd : Date.DEFAULT_DAY );
 	  } 
 	  /** setMonth
 	  *  @param mm new value for month
@@ -59,14 +63,14 @@ public class Date {
 	  *  otherwise, sets month to 1
 	  */
 	  private void setMonth( int mm ) {
-	    month = ( mm >= 1 && mm <= 12 ? mm : 1 );
+	    month = ( mm >= 1 && mm <= 12 ? mm : Date.DEFAULT_MONTH );
 	  }
 	  /** setYear
 	  *  @param yyyy new value for year
 	  *  sets year to yyyy
 	  */
 	  private void setYear( int yyyy ) {
-	    year = yyyy;
+	    year = ( yyyy >= 1 ? yyyy : Date.DEFAULT_YEAR);
 	  }
 		
 	  /** toString
