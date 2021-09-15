@@ -96,9 +96,9 @@ public class Date {
 	   * @return true if the year in the date is a leap year
 	   */
 	  public boolean leapYear() {
-		  if () { return true; }
+		  if ((this.year % 4 == 0) && (this.year % 100 != 0)) { return true; }
 
-		  if () { return true; }
+		  if (this.year % 400 == 0) { return true; }
 		  
 		  return false;
 	  }
