@@ -11,7 +11,7 @@ public class DateClient
 	 // not leap year (not divisible by 4)
 	  Date one = new Date( 1 , 1 , 2001);
 	  if(one.leapYear()) {
-	  System.out.println( one.getYear() + "is a leap year." );
+		  System.out.println( one.getYear() + "is a leap year." );
 	  }
 	  else {
 		  System.out.println( one.getYear() + "is not a leap year." );
@@ -22,7 +22,7 @@ public class DateClient
 		  System.out.println( two.getYear() + "is a leap year." );
 		  }
 	  else {
-			  System.out.println( two.getYear() + "is not a leap year." );
+		  System.out.println( two.getYear() + "is not a leap year." );
 	  }
 	 // not leap year (divisible by 4 and by 100)
 	  Date three = new Date( 1 , 1 , 2200);
