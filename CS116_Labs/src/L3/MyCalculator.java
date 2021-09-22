@@ -10,7 +10,7 @@ public class MyCalculator {
 	private boolean validO = true;
 	private boolean validL = true;
 	
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
 		System.out.print("Please enter an evaulation string: ");
@@ -57,17 +57,17 @@ public class MyCalculator {
 		else if (this.validO && this.validV && this.validL) {
 			
 			switch (this.opr) {
-				case '+': 	System.out.println( this.a + this.opr + this.b + "=" + (this.a + this.b));
+				case '+': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a + this.b));
 							return this.a + this.b;
-				case '-': 	System.out.println( this.a + this.opr + this.b + "=" + (this.a - this.b));
+				case '-': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a - this.b));
 							return this.a - this.b; 	
-				case '*': 	System.out.println( this.a + this.opr + this.b + "=" + (this.a * this.b));
+				case '*': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a * this.b));
 							return this.a * this.b;  
 				case '/': 	if(this.b != 0) { 
-								System.out.println( this.a + this.opr + this.b + "=" + (this.a / this.b)); 
+								System.out.println("" + this.a + this.opr + this.b + "=" + (this.a / this.b)); 
 								return this.a / this.b;
 							} else { return Double.NaN; }
-				case '^': 	System.out.println( this.a + this.opr + this.b + "=" + (Math.pow(this.a , this.b)));
+				case '^': 	System.out.println("" + this.a + this.opr + this.b + "=" + (Math.pow(this.a , this.b)));
 							return Math.pow(this.a, this.b); 
 				default: System.out.print("ERROR: Unknown operator");
 						 return Double.NaN;
