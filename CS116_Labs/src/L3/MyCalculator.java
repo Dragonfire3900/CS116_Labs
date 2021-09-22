@@ -6,6 +6,7 @@ public class MyCalculator {
 	private char opr;
 	private boolean validV = true;
 	private boolean validO = true;
+	private boolean validL = true;
 	
 	public MyCalculator(String m) {
 		String mProblem = m.replaceAll("\\s", "");
@@ -19,13 +20,19 @@ public class MyCalculator {
 			opr = mProblem.charAt(1);
 		}
 		else validO = false;
+		
+		if(mProblem.length() > 3) validL = false;
+		
 	}
 	
 	public void evaluateExpression() {
 		if (!validV) System.out.println( "ERROR: Impossible to evaluate this expression." );
 		
 		if (!validO) System.out.println( "ERROR: Unknown operator." );
-		else {
+		
+		if (!validL) System.out.println( "ERROR: This expression is either too long or too short.");
+		
+		else if (validO && validV && validL) {
 			
 			switch (opr) {
 				case '+': 	System.out.println( a + opr + b + "=" + (a + b));
