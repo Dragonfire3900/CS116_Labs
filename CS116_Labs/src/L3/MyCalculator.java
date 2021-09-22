@@ -18,7 +18,7 @@ public class MyCalculator {
 		
 		MyCalculator test = new MyCalculator(stringInput);
 		
-		System.out.print(String.format("Evaluated: %s, to be %f", stringInput, test.evaluateExpression()));
+		System.out.print(String.format("Evaluated: %s, to be %f", stringInput, MyCalculator.evaluateExpression(test)));
 		input.close();
 	}
 	
@@ -38,42 +38,48 @@ public class MyCalculator {
 		if(mProblem.length() > 3) validL = false;
 	}
 	
-	public Double evaluateExpression() {
-		if (!this.validV) {
+	public static Double evaluateExpression(MyCalculator c) {
+		if (!c.validV) {
 			System.out.println( "ERROR: Impossible to evaluate this expression." );
 			return Double.NaN;
 		};
 		
-		if (!this.validO) {
+		if (!c.validO) {
 			System.out.println( "ERROR: Unknown operator." );
 			return Double.NaN;
 		}
 		
-		if (!this.validL) {
+		if (!c.validL) {
 			System.out.println( "ERROR: This expression is either too long or too short.");
 			return Double.NaN;
 		}
 		
-		else if (this.validO && this.validV && this.validL) {
+		else if (c.validO && c.validV && c.validL) {
 			
-			switch (this.opr) {
-				case '+': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a + this.b));
-							return this.a + this.b;
-				case '-': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a - this.b));
-							return this.a - this.b; 	
-				case '*': 	System.out.println("" + this.a + this.opr + this.b + "=" + (this.a * this.b));
-							return this.a * this.b;  
-				case '/': 	if(this.b != 0) { 
-								System.out.println("" + this.a + this.opr + this.b + "=" + (this.a / this.b)); 
-								return this.a / this.b;
+			switch (c.opr) {
+				case '+': 	System.out.println("" + c.a + c.opr + c.b + "=" + (c.a + c.b));
+							return c.a + c.b;
+				case '-': 	System.out.println("" + c.a + c.opr + c.b + "=" + (c.a - c.b));
+							return c.a - c.b; 	
+				case '*': 	System.out.println("" + c.a + c.opr + c.b + "=" + (c.a * c.b));
+							return c.a * c.b;  
+				case '/': 	if(c.b != 0) { 
+								System.out.println("" + c.a + c.opr + c.b + "=" + (c.a / c.b)); 
+								return c.a / c.b;
 							} else { return Double.NaN; }
-				case '^': 	System.out.println("" + this.a + this.opr + this.b + "=" + (Math.pow(this.a , this.b)));
-							return Math.pow(this.a, this.b); 
+				case '^': 	System.out.println("" + c.a + c.opr + c.b + "=" + (Math.pow(c.a , c.b)));
+							return Math.pow(c.a, c.b); 
 				default: System.out.print("ERROR: Unknown operator");
 						 return Double.NaN;
 		}
 		}
 		return Double.NaN;
+	}
+	
+	public static Double evaluateExpression(String c) {
+		MyCalculator test = new MyCalculator(c);
+		
+		return MyCalculator.evaluateExpression(test);
 	}
 
 }
