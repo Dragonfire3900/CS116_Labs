@@ -23,6 +23,7 @@ public class MyCalculator {
 		
 		if(mProblem.length() > 3) validL = false;
 		
+		this.evaluateExpression();
 	}
 	
 	public void evaluateExpression() {
