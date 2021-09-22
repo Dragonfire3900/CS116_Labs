@@ -23,29 +23,29 @@ public class MyCalculator {
 		
 		if(mProblem.length() > 3) validL = false;
 		
-		this.evaluateExpression();
+		evaluateExpression(this);
 	}
 	
-	public void evaluateExpression() {
-		if (!validV) System.out.println( "ERROR: Impossible to evaluate this expression." );
+	public static void evaluateExpression(MyCalculator c) {
+		if (!c.validV) System.out.println( "ERROR: Impossible to evaluate this expression." );
 		
-		if (!validO) System.out.println( "ERROR: Unknown operator." );
+		if (!c.validO) System.out.println( "ERROR: Unknown operator." );
 		
-		if (!validL) System.out.println( "ERROR: This expression is either too long or too short.");
+		if (!c.validL) System.out.println( "ERROR: This expression is either too long or too short.");
 		
-		else if (validO && validV && validL) {
+		else if (c.validO && c.validV && c.validL) {
 			
-			switch (opr) {
-				case '+': 	System.out.println( a + opr + b + "=" + (a + b));
+			switch (c.opr) {
+				case '+': 	System.out.println( c.a + c.opr + c.b + "=" + (c.a + c.b));
 							break;
-				case '-': 	System.out.println( a + opr + b + "=" + (a - b));
+				case '-': 	System.out.println( c.a + c.opr + c.b + "=" + (c.a - c.b));
 							break; 	
-				case '*': 	System.out.println( a + opr + b + "=" + (a * b));
+				case '*': 	System.out.println( c.a + c.opr + c.b + "=" + (c.a * c.b));
 							break;  
-				case '/': 	if(b != 0) System.out.println( a + opr + b + "=" + (a / b));
+				case '/': 	if(b != 0) System.out.println( c.a + c.opr + c.b + "=" + (c.a / c.b));
 							else System.out.println("ERROR: Impossible to evaluate this expression.");	
 							break; 
-				case '^': 	System.out.println( a + opr + b + "=" + (Math.pow(a , b)));
+				case '^': 	System.out.println( c.a + c.opr + c.b + "=" + (Math.pow(c.a , c.b)));
 							break; 
 		}
 		}
