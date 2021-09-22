@@ -49,6 +49,19 @@ public class DateClient
 	  else {
 			  System.out.println( five.getYear() + "is not a leap year." );
 	  }
+	  
+	  Date tests[] = {
+			  new Date(2, 1, -100),
+			  new Date(2, 29, 2006),
+			  new Date(2, 29, 2000),
+			  new Date(2, 29, 2004),
+			  new Date(2, 29, 1900),
+			  new Date(2, 29, 1600)
+	  };
+	  
+	  for (Date value : tests) {
+		  System.out.print(value.toString() + "\n");
+	  }
 
   }
 }
