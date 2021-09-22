@@ -12,7 +12,7 @@ public class MyCalculator {
 		opr = mProblem.charAt(1);
 	}
 	
-	public double evaluateExpression() {
+	public String evaluateExpression() {
 		double r = 0;
 		switch (opr) {
 			case '+': 	r = (a + b);
@@ -26,7 +26,8 @@ public class MyCalculator {
 			case '^': 	r = (Math.pow(a , b));
 						break; 
 		}
-		return r;
+		if(r != Double.NaN) return String.valueOf(r);
+		else return "ERROR: Impossible to evaluate this expression.";
 	}
 
 }
