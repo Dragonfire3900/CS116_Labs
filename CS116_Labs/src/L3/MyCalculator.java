@@ -26,6 +26,7 @@ public class MyCalculator {
 			case '^': 	r = (Math.pow(a , b));
 						break; 
 		}
+		
 		if(r != Double.NaN) return String.valueOf(r);
 		else return "ERROR: Impossible to evaluate this expression.";
 	}
