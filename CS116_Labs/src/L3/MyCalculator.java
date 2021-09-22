@@ -26,7 +26,7 @@ public class MyCalculator {
 		
 		if (!validV) return "ERROR: Impossible to evaluate this expression.";
 		
-		if(!validO) return "ERROR: Unknown operator.";
+		if (!validO) return "ERROR: Unknown operator.";
 
 		switch (opr) {
 			case '+': 	r = (a + b);
