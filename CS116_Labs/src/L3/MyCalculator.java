@@ -21,27 +21,25 @@ public class MyCalculator {
 		else validO = false;
 	}
 	
-	public String evaluateExpression() {
-		double r = 0;
+	public void evaluateExpression() {
+		if (!validV) System.out.println( "ERROR: Impossible to evaluate this expression." );
 		
-		if (!validV) return "ERROR: Impossible to evaluate this expression.";
-		
-		if (!validO) return "ERROR: Unknown operator.";
-
-		switch (opr) {
-			case '+': 	r = (a + b);
-						break;
-			case '-': 	r = (a - b);
-						break; 	
-			case '*': 	r = (a * b);
-						break;  
-			case '/': 	r = (a / b);
-						break; 
-			case '^': 	r = (Math.pow(a , b));
-						break; 
+		if (!validO) System.out.println( "ERROR: Unknown operator." );
+		else {
+			
+			switch (opr) {
+				case '+': 	System.out.println(a + b);
+							break;
+				case '-': 	System.out.println(a - b);
+							break; 	
+				case '*': 	System.out.println(a * b);
+							break;  
+				case '/': 	System.out.println(a / b);
+							break; 
+				case '^': 	System.out.println(Math.pow(a , b));
+							break; 
 		}
-		
-		return String.valueOf(r);
+		}
 		
 	}
 
