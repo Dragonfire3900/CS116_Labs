@@ -34,7 +34,8 @@ public class MyCalculator {
 							break; 	
 				case '*': 	System.out.println(a * b);
 							break;  
-				case '/': 	System.out.println(a / b);
+				case '/': 	if(b != 0) System.out.println(a / b);
+							else System.out.println("ERROR: Impossible to evaluate this expression.");	
 							break; 
 				case '^': 	System.out.println(Math.pow(a , b));
 							break; 
