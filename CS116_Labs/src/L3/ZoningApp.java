@@ -22,6 +22,6 @@ public class ZoningApp {
 		Zoning t2 = new Zoning(testWidth, testLength);
 		
 		System.out.print(t2.toString());
-		
+		input.close();
 	}
 }
