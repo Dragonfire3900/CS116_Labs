@@ -42,7 +42,7 @@ public class MyCalculator {
 							break; 	
 				case '*': 	System.out.println( c.a + c.opr + c.b + "=" + (c.a * c.b));
 							break;  
-				case '/': 	if(b != 0) System.out.println( c.a + c.opr + c.b + "=" + (c.a / c.b));
+				case '/': 	if(c.b != 0) System.out.println( c.a + c.opr + c.b + "=" + (c.a / c.b));
 							else System.out.println("ERROR: Impossible to evaluate this expression.");	
 							break; 
 				case '^': 	System.out.println( c.a + c.opr + c.b + "=" + (Math.pow(c.a , c.b)));
