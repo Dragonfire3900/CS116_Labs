@@ -13,6 +13,9 @@ public class WhatIsInCommon {
 		
 		System.out.println("Array A: " + Arrays.toString(arrA));
 		System.out.println("Array b: " + Arrays.toString(arrB));
+		
+		System.out.println("Element:		# in A:			# in B:");
+		
 		for(int i = 0; i < 11; i++) {
 			if(a.getElem()[i] > 0 && b.getElem()[i] > 0) {
 				System.out.println(i + "			" + a.getElem()[i] + "			" + b.getElem()[i]);
