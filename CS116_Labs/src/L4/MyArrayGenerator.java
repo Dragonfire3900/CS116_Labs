@@ -9,7 +9,6 @@ public class MyArrayGenerator {
 	public MyArrayGenerator() {
 		numberOfElements = 0 + (int)(Math.random() * 15);
 		Arr = new int[numberOfElements];
-		
 		for (int i = 0; i < numberOfElements; i++)
         {
 			Arr[i] = 0 + (int)(Math.random() * 10);

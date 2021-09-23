@@ -13,7 +13,6 @@ public class WhatIsInCommon {
 		
 		System.out.println("Array A: " + Arrays.toString(arrA));
 		System.out.println("Array b: " + Arrays.toString(arrB));
-		
 		System.out.println("Element:		# in A:			# in B:");
 		
 		for(int i = 0; i < 11; i++) {
