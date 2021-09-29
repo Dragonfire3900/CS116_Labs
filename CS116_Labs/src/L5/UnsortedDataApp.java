@@ -25,6 +25,5 @@ public class UnsortedDataApp {
 	    System.out.println("Total Out of Order BEFORE Bubble = " + UnsortedData.countOutOfPosition(fileNums));
 	    UnsortedData.bubble(fileNums);
 	    System.out.println("Total Out of Order AFTER Bubble = " + UnsortedData.countOutOfPosition(fileNums));
-	    
 	  }
 }
