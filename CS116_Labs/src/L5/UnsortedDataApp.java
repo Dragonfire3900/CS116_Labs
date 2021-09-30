@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 
 public class UnsortedDataApp {
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 	    double [] fileNums = new double [100];
 		double myNum;
 		
@@ -13,17 +13,20 @@ public class UnsortedDataApp {
 	    askFile.close();
 	    
 	    File myFile = new File(fileN);
-	    Scanner fileScanner = new Scanner(myFile);
 	    
-	    for (int i = 0; i < 100; i++) {
-	    	myNum = fileScanner.nextDouble();
-	    	fileNums[i] = myNum;
-	    }
-	    
-	    fileScanner.close();
-	    
-	    System.out.println("Total Out of Order BEFORE Bubble = " + UnsortedData.countOutOfPosition(fileNums));
-	    UnsortedData.bubble(fileNums);
-	    System.out.println("Total Out of Order AFTER Bubble = " + UnsortedData.countOutOfPosition(fileNums));
-	  }
+	    try {
+	    	Scanner fileScanner = new Scanner(myFile);
+	    	for (int i = 0; i < 100; i++) {
+		    	myNum = fileScanner.nextDouble();
+		    	fileNums[i] = myNum;
+		    }
+	    	System.out.println("Total Out of Order BEFORE Bubble = " + UnsortedData.countOutOfPosition(fileNums));
+	 	    UnsortedData.bubble(fileNums);
+	 	    System.out.println("Total Out of Order AFTER Bubble = " + UnsortedData.countOutOfPosition(fileNums));
+	    	fileScanner.close();
+		} catch (FileNotFoundException someException) {
+			System.out.println("Invalid file name.");
+			someException.printStackTrace();
+		}  
+	}
 }
