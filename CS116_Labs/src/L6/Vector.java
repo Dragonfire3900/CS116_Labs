@@ -1,18 +1,18 @@
 package L6;
 
 public class Vector {
-	private double startPointX = 0;
-	private double startPointY = 0;
-	private final double endPointX;
-	private final double endPointY;
+	protected double startPointX = 0;
+	protected double startPointY = 0;
+	protected double endPointX;
+	protected double endPointY;
 	
 	Vector() {
 		endPointX = 0;
 		endPointY = 0;
 	}
-	Vector(double a, double b) {
-		endPointX = a;
-		endPointY = b;
+	Vector(double x2, double y2) {
+		endPointX = x2;
+		endPointY = y2;
 	}
 	
 	public double getStartPointX() {
