@@ -45,9 +45,9 @@ public class Record {
 	
 	public void play() {
 		if (this.DURATION_IN_SECONDS == 0) {
-			System.out.println("Now playing: " + this.toString());
-		} else {
 			System.out.println("ERROR: cannot play this recording");
+		} else {
+			System.out.println("Now playing: " + this.toString());
 		}
 	}
 	
