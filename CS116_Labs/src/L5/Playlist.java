@@ -32,6 +32,8 @@ public class Playlist {
 		} else {
 			this.MAX_PLAYLIST_SIZE = maxPlaylistSize;
 		}
+		
+		this.recordList = new Recording[this.MAX_PLAYLIST_SIZE];
 	}
 
 	//Getters
@@ -100,13 +102,15 @@ public class Playlist {
 		for (int i = 0; i < this.numberOfRecordings; i++) {
 			System.out.println(String.format("Now Playing: %s", this.recordList[i].toString()));
 		}
+		
+		System.out.println();
 	}
 	
 	public String toString() {
 		String output = String.format("Playlist: %s [%dm%ds]", this.name, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin());
 		
-		for (Recording record : this.recordList) {
-			output += "\n" + record.toString();
+		for (int i = 0; i < this.numberOfRecordings; i++) {
+			output += "\n" + this.recordList[i].toString();
 		}
 		
 		return output;
