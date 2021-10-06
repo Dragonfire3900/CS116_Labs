@@ -46,6 +46,10 @@ public class Playlist {
 	public int getDurationInSeconds() {
 		return this.durationInSeconds;
 	}
+	
+	public int getDurationInMin() {
+		return this.durationInSeconds / 60;
+	}
 
 	public int getMaxPlaylistSize() {
 		return this.MAX_PLAYLIST_SIZE;
@@ -91,6 +95,20 @@ public class Playlist {
 	}
 	
 	public void play() {
+		if (this.durationInSeconds == 0) { System.out.println("ERROR: empty playlist"); }
 		
+		for (int i = 0; i < this.numberOfRecordings; i++) {
+			System.out.println(String.format("Now Playing: %s", this.recordList[i].toString()));
+		}
+	}
+	
+	public String toString() {
+		String output = String.format("Playlist: %s [%dm%ds]", this.name, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin());
+		
+		for (Recording record : this.recordList) {
+			output += "\n" + record.toString();
+		}
+		
+		return output;
 	}
 }
