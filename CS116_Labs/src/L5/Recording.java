@@ -1,6 +1,6 @@
 package L5;
 
-public class Record {
+public class Recording {
 	//Instance variables
 	protected final String ARTIST;
 	protected final String NAME;
@@ -11,27 +11,27 @@ public class Record {
 	private static final String DEFAULT_NAME = "UNKNOWN";
 	private static final int DEFAULT_DURATION = 0;
 	
-	Record() {
-		this.ARTIST = Record.DEFAULT_ARTIST;
-		this.NAME = Record.DEFAULT_NAME;
-		this.DURATION_IN_SECONDS = Record.DEFAULT_DURATION;
+	Recording() {
+		this.ARTIST = Recording.DEFAULT_ARTIST;
+		this.NAME = Recording.DEFAULT_NAME;
+		this.DURATION_IN_SECONDS = Recording.DEFAULT_DURATION;
 	}
 	
-	Record(String artist, String name, int duration) {
+	Recording(String artist, String name, int duration) {
 		if (artist != null) {
 			this.ARTIST = artist;
 		} else {
-			this.ARTIST = Record.DEFAULT_ARTIST;
+			this.ARTIST = Recording.DEFAULT_ARTIST;
 		}
 		
 		if (name != null) {
 			this.NAME = name;
 		} else {
-			this.NAME = Record.DEFAULT_NAME;
+			this.NAME = Recording.DEFAULT_NAME;
 		}
 		
 		if (duration < 0) {
-			this.DURATION_IN_SECONDS = Record.DEFAULT_DURATION;
+			this.DURATION_IN_SECONDS = Recording.DEFAULT_DURATION;
 		} else {
 			this.DURATION_IN_SECONDS = duration;
 		}
