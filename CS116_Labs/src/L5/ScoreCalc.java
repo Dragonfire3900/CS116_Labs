@@ -25,12 +25,12 @@ public class ScoreCalc {
 		
 		avg = totalScore / numScore;
 		
-		for (int i = 0; i < numScore; i++) {
-			if (scores[i] > avg) { aboveCount += 1; }
+		for (double score : scores) {
+			if (score > avg) { aboveCount += 1; }
 		}
 		
-		System.out.println(String.format("The average score is %f\n", avg));
-		System.out.println(String.format("There are %d scores above the average\n", aboveCount));
+		System.out.println(String.format("The average score is %f", avg));
+		System.out.println(String.format("There are %d scores above the average", aboveCount));
 		
 		input.close();
 	}
@@ -48,19 +48,18 @@ public class ScoreCalc {
 	private static double getDouble(Scanner input, String initPrompt, String repeatPrompt, double lowerBound, double upperBound) {
 		if (input == null) { return Double.NaN; } //User provided a null scanner
 		
-		if (input.hasNext()) { input.nextLine(); }
+//		if (input.hasNext()) { input.nextLine(); }
 		
 		double output;
 		
-		System.out.println(initPrompt + "\n");
+		System.out.println(initPrompt);
 		while (true) {
 			try {
 				output = input.nextDouble();
 				if (output >= lowerBound && output <= upperBound) { return output; }
-				System.out.println(repeatPrompt + "\n");
+				System.out.println(repeatPrompt);
 			} catch (InputMismatchException ex) {
-				System.out.println(repeatPrompt + "\n");
-			} finally {
+				System.out.println(repeatPrompt);
 				input.nextLine();
 			}
 		}
@@ -77,21 +76,18 @@ public class ScoreCalc {
 	 * @return The int the user gives to the program
 	 */
 	private static int getInt(Scanner input, String initPrompt, String repeatPrompt, int lowerBound, int upperBound) {
-		if (input == null) { return -1; } //User provided a null scanner
-		
-		if (input.hasNext()) { input.nextLine(); }
+		if (input == null) { return Integer.MIN_VALUE; } //User provided a null scanner
 		
 		int output;
 		
-		System.out.println(initPrompt + "\n");
+		System.out.println(initPrompt);
 		while (true) {
 			try {
 				output = input.nextInt();
 				if (output >= lowerBound && output <= upperBound) { return output; }
-				System.out.println(repeatPrompt + "\n");
+				System.out.println(repeatPrompt);
 			} catch (InputMismatchException ex) {
-				System.out.println(repeatPrompt + "\n");
-			} finally {
+				System.out.println(repeatPrompt);
 				input.nextLine();
 			}
 		}
