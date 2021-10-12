@@ -1,6 +1,5 @@
 package L6;
 import L5.*;
-import L5.Record;
 public class AudioRecording extends Recording{
 	final double bitrate;
 	AudioRecording() {
@@ -22,6 +21,6 @@ public class AudioRecording extends Recording{
 	
 	@Override
 	public String toString() {
-		return String.format("%s - %s [%dm%ds]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin());
+		return String.format("%s - %s [%dm%ds] [Audio | bitrate: %d kbps]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin(), this.getBitrate());
 	}
 }

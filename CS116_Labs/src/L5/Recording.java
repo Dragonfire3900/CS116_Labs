@@ -11,13 +11,13 @@ public class Recording {
 	private static final String DEFAULT_NAME = "UNKNOWN";
 	private static final int DEFAULT_DURATION = 0;
 	
-	Recording() {
+	public Recording() {
 		this.ARTIST = Recording.DEFAULT_ARTIST;
 		this.NAME = Recording.DEFAULT_NAME;
 		this.DURATION_IN_SECONDS = Recording.DEFAULT_DURATION;
 	}
 	
-	Recording(String artist, String name, int duration) {
+	public Recording(String artist, String name, int duration) {
 		if (artist != null) {
 			this.ARTIST = artist;
 		} else {
