@@ -1,5 +1,5 @@
 package L6;
-import L5.*;
+import L5.Recording;
 public class AudioRecording extends Recording{
 	final double bitrate;
 	AudioRecording() {

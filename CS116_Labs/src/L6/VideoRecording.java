@@ -1,5 +1,5 @@
 package L6;
-import L5.*;
+import L5.Recording;
 public class VideoRecording extends Recording{
 	final double framerate;
 	VideoRecording(){
