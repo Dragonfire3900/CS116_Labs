@@ -1,0 +1,155 @@
+package L6;
+
+import L5.Recording;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Playlist {
+	//Instance variables
+	protected String name;
+	private int numberOfRecordings = 0;
+	private int durationInSeconds = 0;
+	private final int MAX_PLAYLIST_SIZE;
+	protected Recording[] recordList;
+	
+	//Class variables
+	private static final String DEFAULT_PLAYLIST_NAME = "UNKNOWN";
+	private static final int DEFAULT_MAX_PLAYLIST_SIZE = 5;
+	
+	Playlist() {
+		this.name = Playlist.DEFAULT_PLAYLIST_NAME;
+		
+		this.MAX_PLAYLIST_SIZE = Playlist.DEFAULT_MAX_PLAYLIST_SIZE;
+		
+		recordList = new Recording[this.MAX_PLAYLIST_SIZE];
+	}
+	
+	Playlist(String name, int maxPlaylistSize) {
+		if (name != null) {
+			this.name = name;
+		} else {
+			this.name = Playlist.DEFAULT_PLAYLIST_NAME;
+		}
+		
+		if (maxPlaylistSize <= 0) {
+			this.MAX_PLAYLIST_SIZE = Playlist.DEFAULT_MAX_PLAYLIST_SIZE;
+		} else {
+			this.MAX_PLAYLIST_SIZE = maxPlaylistSize;
+		}
+		
+		this.recordList = new Recording[this.MAX_PLAYLIST_SIZE];
+	}
+
+	//Getters
+	public String getName() {
+		return this.name;
+	}
+
+	public int getNumberOfRecordings() {
+		return this.numberOfRecordings;
+	}
+
+	public int getDurationInSeconds() {
+		return this.durationInSeconds;
+	}
+	
+	public int getDurationInMin() {
+		return this.durationInSeconds / 60;
+	}
+
+	public int getMaxPlaylistSize() {
+		return this.MAX_PLAYLIST_SIZE;
+	}
+
+	public Recording[] getRecordList() {
+		return recordList;
+	}
+	
+	/**
+	 * Returns a specific record inside of the playlist
+	 * @param recordIndex The index of the record the user would like
+	 * @return The specific record they asked for
+	 */
+	public Recording getOneRecord(int recordIndex) {
+		if (recordIndex >= 0 && recordIndex < this.MAX_PLAYLIST_SIZE) {
+			return this.recordList[recordIndex];
+		} else {
+			return new Recording();
+		}
+	}
+	
+	//The lone setter
+	public boolean setName(String newName) {
+		if (newName != null) {
+			return false;
+		} else {
+			this.name = newName;
+			return true;
+		}
+	}
+	
+	//Custom methods
+	public boolean add(Recording newRecord) {
+		if (newRecord == null) { return false; } //Tried to add a null record
+		
+		if (this.numberOfRecordings == this.MAX_PLAYLIST_SIZE) { return false; } //Tried to add too many records to the playlist
+		
+		this.recordList[this.numberOfRecordings] = newRecord;
+		this.numberOfRecordings += 1;
+		this.durationInSeconds += newRecord.getDurationInSeconds();
+		return true;
+	}
+	
+	public void play() {
+		if (this.durationInSeconds == 0) { System.out.println("ERROR: empty playlist"); }
+		
+		for (int i = 0; i < this.numberOfRecordings; i++) {
+			System.out.println(String.format("Now Playing: %s", this.recordList[i].toString()));
+		}
+		
+		System.out.println();
+	}
+	
+	public void shuffle() {
+		if (this.numberOfRecordings != 0) {
+			Random rng = new Random();
+			for (int i = 0; i < this.numberOfRecordings; i++) {
+				this.getOneRecord(rng.nextInt(this.numberOfRecordings)).play();
+			}
+		}
+	}
+	
+	public void load(String fileName) {
+		try {
+			File csvFile = new File(fileName);
+			Scanner inputData = new Scanner(csvFile);
+			String csvLine;
+			
+			while(inputData.hasNext()) {
+				csvLine = inputData.next();
+				try {
+					this.add(RecordingFactory.getRecording(csvLine));
+				} catch (NumberFormatException ex) {
+					System.out.println(String.format("ERROR: Number format exception. Recording rejected {%s}", csvLine));
+				} catch (IllegalArgumentException ex) {
+					System.out.println(String.format("ERROR: unknown record format. Recording rejected {%s}", csvLine));
+				}
+			}
+		} catch (FileNotFoundException ex) {
+			System.out.println(String.format("ERROR: File %s not found!", fileName));
+		}
+	}
+	
+	public String toString() {
+		String output = String.format("Playlist: %s [%dm%ds]", this.name, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin());
+		
+		for (int i = 0; i < this.numberOfRecordings; i++) {
+			output += "\n" + this.recordList[i].toString();
+		}
+		
+		return output;
+	}
+}
