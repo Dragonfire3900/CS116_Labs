@@ -34,6 +34,8 @@ public abstract class CircleSolid {
 	//Accessors
 	public double getRadius() { return this.radius; }
 	
+	public double getCircumference() { return 2 * Math.PI * this.radius; }
+	
 	abstract public double getArea();
 	abstract public double getVolume();
 	
