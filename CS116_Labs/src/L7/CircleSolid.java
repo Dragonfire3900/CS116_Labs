@@ -38,6 +38,6 @@ public abstract class CircleSolid {
 	abstract public double getVolume();
 	
 	public String toString() {
-		return String.format("CircleSolid of radius %.3f", this.getRadius());
+		return String.format("CircleSolid: Radius = %.3f", this.getRadius());
 	}
 }
