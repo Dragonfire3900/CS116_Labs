@@ -19,4 +19,10 @@ public class Sphere extends CircleSolid {
 		// TODO Auto-generated method stub
 		return (4.0) * Math.PI * Math.pow(radius, 2);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Sphere of radius %.3f", this.getRadius());
+	}
+
 }
