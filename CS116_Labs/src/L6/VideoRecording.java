@@ -21,7 +21,7 @@ public class VideoRecording extends Recording{
 	
 	@Override
 	public String toString() {
-		return String.format("%s - %s [%dm%ds] [Video | framerate: %d fps]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin(), this.getFramerate());
+		return String.format("%s - %s [%dm%ds] [VIDEO | framerate: %.3f fps]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin(), this.getFramerate());
 	}
 
 }

@@ -21,6 +21,6 @@ public class AudioRecording extends Recording{
 	
 	@Override
 	public String toString() {
-		return String.format("%s - %s [%dm%ds] [Audio | bitrate: %d kbps]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin(), this.getBitrate());
+		return String.format("%s - %s [%dm%ds] [AUDIO | bitrate: %.3f kbps]", this.getArtist(), this.NAME, this.getDurationInMin(), this.getDurationInSeconds() - 60 * this.getDurationInMin(), this.getBitrate());
 	}
 }

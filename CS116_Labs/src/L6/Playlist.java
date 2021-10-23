@@ -113,13 +113,19 @@ public class Playlist {
 		System.out.println();
 	}
 	
-	public void shuffle() {
-		if (this.numberOfRecordings != 0) {
+	public void shuffle(int numRecordingsToPlay) {
+		if (this.numberOfRecordings != 0 && numRecordingsToPlay > 0) {
 			Random rng = new Random();
-			for (int i = 0; i < this.numberOfRecordings; i++) {
+			for (int i = 0; i < numRecordingsToPlay; i++) {
 				this.getOneRecord(rng.nextInt(this.numberOfRecordings)).play();
 			}
+			
+			System.out.println();
 		}
+	}
+	
+	public void shuffle() {
+		this.shuffle(this.numberOfRecordings);
 	}
 	
 	public void load(String fileName) {
@@ -128,8 +134,8 @@ public class Playlist {
 			Scanner inputData = new Scanner(csvFile);
 			String csvLine;
 			
-			while(inputData.hasNext()) {
-				csvLine = inputData.next();
+			while(inputData.hasNextLine()) {
+				csvLine = inputData.nextLine();
 				try {
 					this.add(RecordingFactory.getRecording(csvLine));
 				} catch (NumberFormatException ex) {
@@ -150,6 +156,6 @@ public class Playlist {
 			output += "\n" + this.recordList[i].toString();
 		}
 		
-		return output;
+		return output + "\n";
 	}
 }
