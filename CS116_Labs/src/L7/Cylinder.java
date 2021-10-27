@@ -46,6 +46,6 @@ public class Cylinder extends CircleSolid {
 	}
 	
 	public String toString() {		
-		return String.format("%s\nCylinder: Height = %.3f, Volume = %0.3f", super.toString(), this.getHeight(), this.getVolume());
+		return String.format("%s\nCylinder: Height = %.3f, Volume = %.3f", super.toString(), this.getHeight(), this.getVolume());
 	}
 }
