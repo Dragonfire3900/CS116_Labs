@@ -22,7 +22,7 @@ public class Sphere extends CircleSolid {
 	
 	@Override
 	public String toString() {
-		return String.format("Sphere of radius %.3f", this.getRadius());
+		return String.format("%s\nSphere: Volume = %.3f", super.toString(), this.getVolume());
 	}
 
 }
