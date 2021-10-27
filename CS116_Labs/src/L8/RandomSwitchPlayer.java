@@ -1,5 +1,5 @@
 package L8;
 
-public class RandomSwitchPlayer {
+public class RandomSwitchPlayer extends Player implements PlayerInterface{
 
 }
