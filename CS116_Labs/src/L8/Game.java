@@ -25,6 +25,6 @@ public class Game {
 		int[] doors = {1, 2, 3};
 		Random rand = new Random();
 		doors = Arrays.stream(doors).filter(x -> x != p && x != prizeLocation).toArray();
-		return doors[rand.nextInt((doors.length - 1) + 1) + 1];
+		return doors[rand.nextInt(doors.length)];
 	}
 }
