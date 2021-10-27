@@ -16,6 +16,7 @@ public class SwitchPlayer extends Player implements PlayerInterface {
 		
 		possibleDoors = Arrays.stream(possibleDoors).filter(x -> x != openDoor && x != this.selectedDoor).toArray();
 		
-		return possibleDoors[rng.nextInt(possibleDoors.length)];
+		this.selectedDoor = possibleDoors[rng.nextInt(possibleDoors.length)];
+		return this.selectedDoor;
 	}
 }

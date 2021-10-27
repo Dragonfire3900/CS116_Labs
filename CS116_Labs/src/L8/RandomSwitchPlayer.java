@@ -17,7 +17,8 @@ public class RandomSwitchPlayer extends Player implements PlayerInterface{
 			int[] possibleDoors = {1, 2, 3};
 			possibleDoors = Arrays.stream(possibleDoors).filter(x -> x != openDoor && x != this.selectedDoor).toArray();
 			
-			return possibleDoors[rng.nextInt(possibleDoors.length)];
+			this.selectedDoor = possibleDoors[rng.nextInt(possibleDoors.length)];
+			return this.selectedDoor;
 		} else {
 			return this.selectedDoor;
 		}
