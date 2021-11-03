@@ -1,5 +1,5 @@
 package L9;
 
-public class SequentialSearch {
+public class SequentialSearch implements SearchInterface {
 
 }

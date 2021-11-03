@@ -1,5 +1,5 @@
 package L9;
 
-public class SearchInterface {
+public interface SearchInterface {
 
 }

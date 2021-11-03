@@ -1,5 +1,5 @@
 package L9;
 
-public class BinSearch {
+public class BinSearch implements SearchInterface {
 
 }
