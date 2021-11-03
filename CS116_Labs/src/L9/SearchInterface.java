@@ -1,5 +1,5 @@
 package L9;
-
+import java.util.*;
 public interface SearchInterface {
 	/**
 	 * Finds the index where the target should be inserted. Assumes that the list needs to be lowest to greatest
@@ -10,5 +10,5 @@ public interface SearchInterface {
 	 * 
 	 * @return the index of where the target should be inserted
 	 */
-	public int findIndex(double[] data, double target, int lowBound, int upperBound); 
+	public int findIndex(ArrayList<Double> data, double target, int lowBound, int upperBound); 
 }
