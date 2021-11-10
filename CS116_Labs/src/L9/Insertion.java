@@ -6,8 +6,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Insertion {
-	public double[] InsertionSort(double[] dataArr, SearchInterface searchMeth) {
-		ArrayList<Double> dataList = DoubleStream.of(dataArr).boxed().collect(Collectors.toCollection(ArrayList::new));
+	public Double[] InsertionSort(ArrayList<Double> dataList, SearchInterface searchMeth) {
 		
 		Double tmpStore;
 		int newIndex;
@@ -19,6 +18,6 @@ public class Insertion {
 			dataList.add(newIndex, tmpStore);
 		}
 		
-		return Stream.of(dataList.toArray()).mapToDouble(Double::doubleValue).toArray();
+		return (Double[]) dataList.toArray();
 	}
 }
