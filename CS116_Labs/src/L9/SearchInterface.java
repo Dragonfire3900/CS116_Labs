@@ -10,5 +10,5 @@ public interface SearchInterface {
 	 * 
 	 * @return the index of where the target should be inserted
 	 */
-	public int findIndex(ArrayList<Double> data, double target, int lowBound, int upperBound); 
+	public int findIndex(ArrayList<Integer> data, double target, int lowBound, int upperBound); 
 }
