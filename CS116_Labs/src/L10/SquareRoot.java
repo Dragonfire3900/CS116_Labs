@@ -3,8 +3,8 @@ package L10;
 public class SquareRoot {
 
 	public static void main(String[] args) {
-		System.out.println(SR(36,0.1));
-
+		System.out.println(SR(9,0.15));
+		System.out.println(SR(345,1));
 	}
 	
 	public static double SR(double a, double t) {
