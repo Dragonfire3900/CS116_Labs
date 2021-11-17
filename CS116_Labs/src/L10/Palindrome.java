@@ -4,7 +4,7 @@ public class Palindrome {
 
 	public static void main(String[] args) {
 		System.out.println(P("racecar"));
-
+		System.out.println(P("abcdefg"));
 	}
 	
 	public static boolean P(String word) {
