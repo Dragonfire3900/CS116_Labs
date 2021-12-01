@@ -1,4 +1,5 @@
 package FinalProject;
+import java.util.Scanner;
 
 public class App {
 
@@ -6,5 +7,20 @@ public class App {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public static UserMenu() {
+		
+	}
+	
+	public static StreamMenu() {
+		
+	}
 
+	public static String getStrInput(Scanner sc) {
+		
+	}
+
+	public static int getIntInput(Scanner sc) {
+		
+	}
 }
