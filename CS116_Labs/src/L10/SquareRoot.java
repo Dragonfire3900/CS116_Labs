@@ -19,5 +19,5 @@ public class SquareRoot {
 			approx = (0.5) * (approx + tar / approx);
 			return SR(tar, tol, approx);
 		}
-
+	}
 }
