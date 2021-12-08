@@ -34,7 +34,7 @@ public class Playlist {
 	public int getDuration() {
 		int d = 0;
 		for(int i = 0; i < this.recordList.size(); i++) {
-			d += this.recordList.get(i).getDurationInSeconds();
+			d += this.recordList.get(i).getDurInSeconds();
 		}
 		return d;
 	}
