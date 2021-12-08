@@ -7,6 +7,7 @@ public class SquareRoot {
 		System.out.println(SR(345,1));
 	}
 	
+	
 	public static double SR(double tar, double tol) {
 		return SR(tar, tol, tar / 2);
 	}
@@ -16,8 +17,7 @@ public class SquareRoot {
 			return approx;
 		} else {
 			approx = (0.5) * (approx + tar / approx);
-			System.out.println(approx);
 			return SR(tar, tol, approx);
 		}
-	}
+
 }
