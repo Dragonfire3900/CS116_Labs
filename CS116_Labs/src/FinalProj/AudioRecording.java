@@ -19,6 +19,10 @@ public class AudioRecording extends Recording{
 		return bitrate;
 	}
 	
+	public String asCSV(String delim) {
+		return String.format("%s %d%s", this.baseCSV(delim), this.getBitrate(), delim);
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("%s - %s [%dm%ds] [AUDIO | bitrate: %.3f kbps]", this.getArtist(), this.getName(), this.getDurInMin(), this.getDurInSeconds() - 60 * this.getDurInMin(), this.getBitrate());

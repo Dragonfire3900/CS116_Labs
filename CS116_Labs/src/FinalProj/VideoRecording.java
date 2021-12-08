@@ -19,6 +19,10 @@ public class VideoRecording extends Recording {
 		return framerate;
 	}
 	
+	public String asCSV(String delim) {
+		return String.format("%s %d%s", this.baseCSV(delim), this.getFramerate(), delim);
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("%s - %s [%dm%ds] [VIDEO | framerate: %.3f fps]", this.getArtist(), this.getName(), this.getDurInMin(), this.getDurInSeconds() - 60 * this.getDurInMin(), this.getFramerate());

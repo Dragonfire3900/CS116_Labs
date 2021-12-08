@@ -68,6 +68,12 @@ public abstract class Recording {
 		}
 	}
 	
+	protected String baseCSV(String delim) {
+		return String.format("%s%s %s%s %d%s", this.getArtist(), delim, this.getName(), delim, this.getDurInSeconds(), delim);
+	}
+	
+	public abstract String asCSV(String delim);
+	
 	public String toString() {
 		return String.format("%s - %s [%dm%ds]", this.artist, this.name, this.getDurInMin(), this.getDurInSeconds() - 60 * this.getDurInMin());
 	}

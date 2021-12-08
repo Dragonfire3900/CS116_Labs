@@ -4,7 +4,7 @@ package FinalProj;
  * 
  *
  */
-public class MalformedRecording extends RuntimeException{
+public class MalformedRecording extends Exception{
 	public MalformedRecording(String errorMessage, Throwable err) {
 		super(errorMessage, err);
 	}
