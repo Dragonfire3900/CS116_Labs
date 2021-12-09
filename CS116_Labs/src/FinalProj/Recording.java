@@ -11,6 +11,7 @@ public abstract class Recording {
 	protected String artist;
 	protected String name;
 	protected int dur; //This is in second
+	protected int playNum;
 	
 	public Recording() {
 		this.artist = Recording.DEF_ARTIST;
@@ -43,6 +44,8 @@ public abstract class Recording {
 	
 	public String getName() { return this.name; }
 	
+	public int getPlayNum() { return this.playNum; }
+	
 	public int getDurInSeconds() { return this.dur; }
 	
 	public int getDurInMin() { return this.dur / 60; }
@@ -59,12 +62,23 @@ public abstract class Recording {
 				this.name.equals(other.getName());
 	}
 	
+	public int playNumComp(Recording other) {
+		if (this.getPlayNum() < other.getPlayNum()) {
+			return -1;
+		} else if (this.getPlayNum() == other.getPlayNum()) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+	
 	//String manipulations
 	public void play() throws Unplayable {
 		if (this.dur == 0) {
 			throw new Unplayable(String.format("%s is unplayable", this.toString()));
 		} else {
 			System.out.println("Now playing: " + this.toString());
+			this.playNum += 1;
 		}
 	}
 	

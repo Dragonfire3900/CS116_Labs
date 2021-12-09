@@ -153,7 +153,7 @@ public class Playlist {
 	
 	//Misc operations
 	public void stats() {
-		
+		//TODO: Sort according to the 
 	}
 	
 	public void shuffle() {
