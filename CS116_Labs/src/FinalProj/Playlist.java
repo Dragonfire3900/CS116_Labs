@@ -2,6 +2,8 @@ package FinalProj;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,8 +52,8 @@ public class Playlist {
 		return this.recordList.get(index);
 	}
 	
-	public Recording getRecord(String name) {
-		return this.recordList.in
+	public Recording getRecord(String name) throws NoSuchElementException {
+		return this.recordList.stream().filter(rec -> rec.name.equals(name)).findFirst().orElseThrow();
 	}
 	
 	//Mutators
@@ -138,6 +140,7 @@ public class Playlist {
 				System.out.println("Unplayable recording");
 			}
 		});
+		this.numPlayedCount += 1;
 	}
 	
 	public void play(int index) {
@@ -149,11 +152,26 @@ public class Playlist {
 	}
 	
 	public void play(String name) {
+		try {
+			this.getRecord(name).play();
+		} catch (NoSuchElementException e) {
+			System.out.println("Could not find the record you wanted to play");
+		} catch (Unplayable e) {
+			System.out.println("Unplayable recording");
+		}
 	}
 	
 	//Misc operations
 	public void stats() {
-		//TODO: Sort according to the 
+		StringBuilder output = new StringBuilder();
+		output.append(String.format("Playlist %s stats", this.getName()));
+		
+		@SuppressWarnings("unchecked") //It's okay to suppress this warning because its known to be this type
+		ArrayList<Recording> copy = (ArrayList<Recording>) this.recordList.clone();
+		
+		copy.sort((o1, o2) -> o1.playNumComp(o2));
+		
+		copy.forEach(rec -> output.append(String.format("%s - %s - %d", rec.getArtist(), rec.getName(), rec.getPlayNum())));
 	}
 	
 	public void shuffle() {
