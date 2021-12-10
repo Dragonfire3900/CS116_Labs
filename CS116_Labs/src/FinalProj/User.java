@@ -3,6 +3,7 @@ package FinalProj;
 public class User{
 	protected int ID;
 	protected String Username;
+	protected Playlist playlist;
 	
 	public User(int i, String u) {
 		this.ID = i;
@@ -15,6 +16,10 @@ public class User{
 	
 	public String getUsername() {
 		return this.Username;
+	}
+	
+	public Playlist getPlaylist() {
+		return this.playlist;
 	}
 	
 	public void setUsername(String u) {
