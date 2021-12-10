@@ -5,9 +5,16 @@ public class User{
 	protected String Username;
 	protected Playlist playlist;
 	
-	public User(int i, String u) {
-		this.ID = i;
-		this.Username = u;
+	public User(int id, String userName) {
+		this.ID = id;
+		this.Username = userName;
+		this.playlist = new Playlist();
+	}
+	
+	public User(int id, User oldUser) {
+		this.ID = id;
+		this.Username = oldUser.getUsername();
+		this.playlist = new Playlist(oldUser.getPlaylist());
 	}
 	
 	public int getID() {
@@ -24,6 +31,10 @@ public class User{
 	
 	public void setUsername(String u) {
 		this.Username = u;
+	}
+	
+	public void setPlaylistName(String nName) {
+		this.playlist.setName(nName);
 	}
 	
 	public String toString() {

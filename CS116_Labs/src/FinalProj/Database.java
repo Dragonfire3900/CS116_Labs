@@ -8,16 +8,13 @@ import java.util.Random;
 public class Database {
 	private static HashMap<Integer, User> hash = new HashMap<Integer, User>();
 	private static final double implodeThresh = Math.pow(10, -6);
+	private static int nextUserID = 0;
 	
 	public Database() {
-		
+		super();
 	}
 	
 	public Database(ArrayList<User> users) {
-		
-	}
-	
-	public Database(String file) {
 		
 	}
 	
@@ -32,19 +29,6 @@ public class Database {
 	
 	//Mutators
 	public void addUser(User nUser) {
-		
-	}
-	
-	public void addUser(String file) {
-		
-	}
-	
-	//IO stuff
-	public void load(String file, String delim) {
-		
-	}
-	
-	public void save(String file, String delim) {
 		
 	}
 	

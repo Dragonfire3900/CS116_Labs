@@ -31,6 +31,15 @@ public class Playlist {
 		this.recordList = new ArrayList<Recording>();
 	}
 	
+	public Playlist(Playlist oldPlay) {
+		this.name = oldPlay.getName();
+		this.numPlayedCount = oldPlay.getPlayNum();
+		
+		this.recordList = new ArrayList<Recording>();
+		
+		
+	}
+	
 	//Accessors
 	public String getName() {
 		return this.name;
@@ -55,6 +64,8 @@ public class Playlist {
 	public Recording getRecord(String name) throws NoSuchElementException {
 		return this.recordList.stream().filter(rec -> rec.name.equals(name)).findFirst().orElseThrow();
 	}
+	
+	public int getPlayNum() { return this.numPlayedCount; }
 	
 	//Mutators
 	public void setName(String nName) {
