@@ -15,26 +15,52 @@ public class Database {
 	}
 	
 	public Database(ArrayList<User> users) {
-		
+		users.forEach(usr -> this.addUser(usr));
 	}
 	
 	//Accessors
 	public User getUser(int id) { return hash.get((Integer) id); }
 	
+	public User getUser(String usrName) {
+		return hash.entrySet().stream()
+			.filter(map -> map.getValue().getUsername() == usrName)
+			.findFirst().orElseThrow().getValue();
+	}
+	
 	public void listUsers() {
-		
+		System.out.println(this.toString());
 	}
 	
 	public int getSize() { return hash.size(); }
 	
 	//Mutators
 	public void addUser(User nUser) {
-		
+		hash.put(Database.nextUserID, new User(nextUserID, nUser));
+		Database.nextUserID += 1;
+	}
+	
+	public void addUser(String usrName) {
+		hash.put(Database.nextUserID, new User(nextUserID, usrName));
+		Database.nextUserID += 1;
+	}
+	
+	public void remUser(int id) {
+		hash.remove((Integer) id);
+	}
+	
+	public void remUser(String usrName) {
+		hash.entrySet().stream()
+			.filter(map -> map.getValue().getUsername() == usrName)
+			.forEach(map -> this.remUser(map.getKey()));
 	}
 	
 	//String manipulations
 	public String toString() {
+		StringBuilder output = new StringBuilder();
 		
+		output.append("Database\nUsrName  -  ID\n");
+		Database.hash.forEach((key, usr) -> output.append(usr.toString() + "\n"));
+		return output.toString();
 	}
 	
 	//Don't worry about me
