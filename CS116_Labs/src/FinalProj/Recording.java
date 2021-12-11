@@ -39,6 +39,13 @@ public abstract class Recording {
 		}
 	}
 	
+	public Recording(Recording oldRec) {
+		this.artist = oldRec.getArtist();
+		this.name = oldRec.getName();
+		this.dur = oldRec.getDurInSeconds();
+		this.playNum = oldRec.getPlayNum();
+	}
+	
 	//Accessors
 	public String getArtist() { return this.artist; }
 	
@@ -91,4 +98,7 @@ public abstract class Recording {
 	public String toString() {
 		return String.format("%s - %s [%dm%ds]", this.artist, this.name, this.getDurInMin(), this.getDurInSeconds() - 60 * this.getDurInMin());
 	}
+	
+	//Special functions
+	public abstract Recording makeCopy();
 }
