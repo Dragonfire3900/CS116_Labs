@@ -37,7 +37,7 @@ public class Playlist {
 		
 		this.recordList = new ArrayList<Recording>();
 		
-		
+		oldPlay.getRecordings().stream().forEach(rec -> this.recordList.add(rec.makeCopy()));
 	}
 	
 	//Accessors
