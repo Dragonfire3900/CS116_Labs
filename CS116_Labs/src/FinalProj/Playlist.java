@@ -98,24 +98,25 @@ public class Playlist {
 		this.recordList.removeIf(rec -> rec.getName().equals(songName));
 	}
 	
+	public void cpyPlaylist(Playlist other) {
+		other.getRecordings().forEach(rec -> this.addRecord(rec));
+	}
+	
 	//IO operations
-	public static Playlist load(String file, String delim) throws FileNotFoundException {
+	public void load(String file, String delim) throws FileNotFoundException {
 		File readFile = new File(file);
-		Playlist tmpPlay = new Playlist(readFile.getName().split(".")[0]);
 		
 		Scanner fileRead = new Scanner(readFile);
 		
 		while(fileRead.hasNextLine()) {
 			String data = fileRead.nextLine();
 			try {
-				tmpPlay.addRecord(RecordingFactory.build(data, delim));
+				this.addRecord(RecordingFactory.build(data, delim));
 			} catch (MalformedRecording e) {
 				System.out.println(String.format("tried to make a malformed recording: %s", data));
 			}
 		}
 		fileRead.close();
-		
-		return tmpPlay;
 	}
 	
 	public void save(String file, String delim) {
