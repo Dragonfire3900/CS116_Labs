@@ -38,7 +38,7 @@ public class User{
 	}
 	
 	public String toString() {
-		return String.format("%s - %d", this.Username, this.ID);
+		return String.format("'%s' - '%d'", this.Username, this.ID);
 		
 	}
 }

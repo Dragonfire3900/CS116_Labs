@@ -22,6 +22,7 @@ public class Database {
 	public User getUser(int id) { return hash.get((Integer) id); }
 	
 	public User getUser(String usrName) {
+//		System.out.println("\'" + usrName + "\'");
 		return hash.entrySet().stream()
 			.filter(map -> map.getValue().getUsername() == usrName)
 			.findFirst().orElseThrow().getValue();

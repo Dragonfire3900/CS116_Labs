@@ -15,8 +15,18 @@ public class RecordingFactory {
 		
 		switch(infoList.length) {
 			case 5: switch (infoList[0]) {
-						case "V": return new VideoRecording(infoList[2], infoList[1], Integer.parseInt(infoList[3]), Double.parseDouble(infoList[4]));
-						case "A": return new AudioRecording(infoList[2], infoList[1], Integer.parseInt(infoList[3]), Double.parseDouble(infoList[4]));
+						case "V":
+							try {
+								return new VideoRecording(infoList[2], infoList[1], Integer.parseInt(infoList[3]), Double.parseDouble(infoList[4]));
+							} catch(NumberFormatException e) {
+								throw new MalformedRecording("Incorrect number format", e);
+							}
+						case "A":
+							try {
+								return new AudioRecording(infoList[2], infoList[1], Integer.parseInt(infoList[3]), Double.parseDouble(infoList[4]));
+							} catch(NumberFormatException e) {
+								throw new MalformedRecording("Incorrect number format", e);
+							}
 						default: throw new MalformedRecording("Unknown string record format");
 					}
 			default: throw new MalformedRecording("Unknown string record format");

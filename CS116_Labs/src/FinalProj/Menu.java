@@ -120,10 +120,10 @@ public class Menu {
 				int id = this.sc.nextInt();
 				this.getAct(id - 1).run();
 			} catch (InputMismatchException e) {
-				System.out.println("Please enter a valid integer to select");
+				System.out.println("Please enter a valid integer to select\n");
 				this.sc.nextLine();
 			} catch (NoSuchElementException e) {
-				System.out.println("That was not a valid option to select");
+				System.out.println("That was not a valid option to select\n");
 			}
 		} while (this.looping);
 	}

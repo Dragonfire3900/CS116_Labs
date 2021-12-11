@@ -28,7 +28,7 @@ public class AudioRecording extends Recording{
 	}
 	
 	public String asCSV(String delim) {
-		return String.format("%s %d%s", this.baseCSV(delim), this.getBitrate(), delim);
+		return String.format("A%s%s %f%s\n", delim, this.baseCSV(delim), this.getBitrate(), delim);
 	}
 	
 	@Override

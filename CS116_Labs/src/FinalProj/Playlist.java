@@ -95,7 +95,7 @@ public class Playlist {
 	}
 	
 	public void remRecord(String songName) {
-		this.recordList.removeIf(rec -> rec.getName().equals(songName));
+		this.recordList.removeIf(rec -> rec.getName().equalsIgnoreCase(songName));
 	}
 	
 	public void cpyPlaylist(Playlist other) {
@@ -137,6 +137,8 @@ public class Playlist {
 					System.out.println("Write error");
 				}
 			});
+			
+			csvWrite.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Write error");
@@ -176,14 +178,19 @@ public class Playlist {
 	//Misc operations
 	public void stats() {
 		StringBuilder output = new StringBuilder();
-		output.append(String.format("Playlist %s stats", this.getName()));
+		output.append(String.format("Playlist %s stats\n", this.getName()));
+		output.append("Index Artist - Song Name - Number of plays\n");
 		
 		@SuppressWarnings("unchecked") //It's okay to suppress this warning because its known to be this type
 		ArrayList<Recording> copy = (ArrayList<Recording>) this.recordList.clone();
 		
 		copy.sort((o1, o2) -> o1.playNumComp(o2));
 		
-		copy.forEach(rec -> output.append(String.format("%s - %s - %d", rec.getArtist(), rec.getName(), rec.getPlayNum())));
+		for (int i = 0; i < copy.size(); i++) {
+			output.append(String.format("%s - %s - %d\n", i, copy.get(i).getArtist(), copy.get(i).getName(), copy.get(i).getPlayNum()));
+		}
+		
+		System.out.println(output);
 	}
 	
 	public void shuffle() {
@@ -192,9 +199,11 @@ public class Playlist {
 	
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		output.append(String.format("Playlist name: %s", this.getName()));
+		output.append(String.format("Playlist name: %s\n", this.getName()));
 		
-		this.recordList.forEach(rec -> output.append("\n\t" + rec.toString()));
+		for (int i = 0; i < this.recordList.size(); i++) {
+			output.append(String.format("%d %s\n", i, this.getRecord(i)));
+		}
 		
 		return output.toString();
 	}

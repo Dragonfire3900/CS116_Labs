@@ -26,13 +26,50 @@ public class App {
 		
 		initMenu.addAct(() -> rmUsr.process(), "Remove user");
 		
+		//Building the recording build menu
+		Menu buildMen = new Menu("Menu for record building", "What kind of recording would you like to build?", App.sc);
+		buildMen.addAct(() -> App.buildVideo(), "Video");
+		buildMen.addAct(() -> App.buildAudio(), "Audio");
+		
+		//Building the recording play menu
+		Menu playMen = new Menu("Menu for playing individual recordings", "How would you like to select one song to play?", App.sc);
+		playMen.addAct(() -> App.playOneID(), "By Index");
+		playMen.addAct(() -> App.playOneName(), "By Song Name");
+		
+		//Building the recording remove menu
+		Menu remMen = new Menu("Menu for removing individual recordings", "How would you like to select one song to remove?", App.sc);
+		remMen.addAct(() -> App.remRecordID(), "By Index");
+		remMen.addAct(() -> App.remRecordName(), "By Song Name");
+		
 		//Building the streaming submenu
 		Menu stream = new Menu("Main streaming submenu", "Welcome to the streaming menu!", App.sc);
+		stream.addAct(() -> buildMen.process(), "Add a recording");
+		stream.addAct(() -> App.setPlaylistName(), "Change playlist name");
+		stream.addAct(() -> App.loadPlaylist(), "Load playlist from file");
+		stream.addAct(() -> App.savePlaylist(), "Save current playlist");
+		stream.addAct(() -> App.loadPlaylistUsr(), "Add playlist from another user");
+		stream.addAct(() -> App.showPlaylist(), "Show playlist");
+		stream.addAct(() -> remMen.process(), "Remove individual recording");
+		stream.addAct(() -> playMen.process(), "Play single recording");
+		stream.addAct(() -> App.playAll(), "Play entire playlist");
+		stream.addAct(() -> App.shuffle(), "Shuffle playlist");
+		stream.addAct(() -> App.stats(), "Show playlist stats");
+		
+		stream.addAct(() -> stream.setLoop(false), "Exit streaming");
 		
 		//Building the select user submenu
 		Menu selUsr = new Menu("Selecting user", "How would you like to select a user?", App.sc);
-		selUsr.addAct(() -> {App.selUsrID(); stream.process();}, "By ID");
-		selUsr.addAct(() -> {App.selUsrUsr(); stream.process();}, "By username");
+		selUsr.addAct(() -> {
+			App.selUsrID(); 
+			stream.setLoop(true);
+			stream.process();
+			}, "By ID");
+		
+		selUsr.addAct(() -> {
+			App.selUsrUsr();
+			stream.setLoop(true);
+			stream.process();
+			}, "By username");
 		
 		initMenu.addAct(() -> selUsr.process(), "Select user and stream");
 		
@@ -81,15 +118,12 @@ public class App {
 				break;
 			} catch (NoSuchElementException e) {
 				System.out.println("Please enter a valid username");
+				e.printStackTrace();
 			}
 		}
 	}
 	
 	//Streaming submenu functions
-	public static void addRecord() {
-		
-	}
-	
 	public static void setPlaylistName() {
 		App.currUsr.getPlaylist().setName(getStrInput(App.sc, "Please enter a new playlist name"));
 	}
@@ -116,7 +150,7 @@ public class App {
 	}
 	
 	public static void savePlaylist() {
-		
+		App.currUsr.getPlaylist().save(getStrInput(App.sc, "Please enter the path and name of where you want to save the playlist"), ",");
 	}
 	
 	public static void playAll() {
@@ -139,16 +173,37 @@ public class App {
 	
 	public static void remRecordName() {
 		System.out.println(App.currUsr.getPlaylist());
-		App.currUsr.getPlaylist().remRecord(getIntInput(App.sc, "Please enter the name of the record you want to remove"));
+		App.currUsr.getPlaylist().remRecord(getStrInput(App.sc, "Please enter the name of the record you want to remove"));
 	}
 	
 	//Playing record functions
 	public static void playOneID() {
+		System.out.println(App.currUsr.getPlaylist());
 		App.currUsr.getPlaylist().play(getIntInput(App.sc, "Please enter the index of the record you want to play"));
 	}
 	
 	public static void playOneName() {
+		System.out.println(App.currUsr.getPlaylist());
 		App.currUsr.getPlaylist().play(getStrInput(App.sc, "Please enter the name of the record you want to play"));
+	}
+	
+	//Building record functions
+	public static void buildVideo() {
+		String artist = getStrInput(App.sc, "Please enter the artist name");
+		String name = getStrInput(App.sc, "Please enter the video name");
+		int duration = getIntInput(App.sc, "Please enter the duration rounded to the nearest second");
+		double fr = getDoubleInput(App.sc, "Please enter the frame rate of the video");
+		
+		App.currUsr.getPlaylist().addRecord(new VideoRecording(artist, name, duration, fr));
+	}
+	
+	public static void buildAudio() {
+		String artist = getStrInput(App.sc, "Please enter the artist name");
+		String name = getStrInput(App.sc, "Please enter the song name");
+		int duration = getIntInput(App.sc, "Please enter the duration rounded to the nearest second");
+		double fr = getDoubleInput(App.sc, "Please enter the bit rate of the audio");
+		
+		App.currUsr.getPlaylist().addRecord(new AudioRecording(artist, name, duration, fr));
 	}
 
 	//Utilities
@@ -160,7 +215,6 @@ public class App {
 				return sc.next();
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter a valid string");
-				System.out.println();
 			}
 		}
 	}
@@ -173,7 +227,18 @@ public class App {
 				return sc.nextInt();
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter a valid Int");
-				System.out.println();
+			}
+		}
+	}
+	
+	public static double getDoubleInput(Scanner sc, String prompt) {
+		while (true) {
+			try {
+				sc.nextLine();
+				System.out.println(prompt);
+				return sc.nextDouble();
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter a valid Int");
 			}
 		}
 	}

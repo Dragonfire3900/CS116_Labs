@@ -28,7 +28,7 @@ public class VideoRecording extends Recording {
 	}
 	
 	public String asCSV(String delim) {
-		return String.format("%s %d%s", this.baseCSV(delim), this.getFramerate(), delim);
+		return String.format("V%s%s %f%s\n", delim, this.baseCSV(delim), this.getFramerate(), delim);
 	}
 	
 	@Override
