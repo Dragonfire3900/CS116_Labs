@@ -23,13 +23,13 @@ public abstract class Recording {
 		if (nArtist.isBlank()) {
 			this.artist = Recording.DEF_ARTIST;
 		} else {
-			this.artist = nArtist;
+			this.artist = nArtist.trim();
 		}
 		
 		if (nName.isBlank()) {
 			this.name = Recording.DEF_NAME;
 		} else {
-			this.name = nName;
+			this.name = nName.trim();
 		}
 		
 		if (nDur <= 0) {

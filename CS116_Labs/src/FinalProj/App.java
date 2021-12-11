@@ -95,7 +95,7 @@ public class App {
 	}
 	
 	public static void remUsrUsr() {
-		store.getUser(getStrInput(sc, "Please enter a username to remove"));
+		store.remUser(getStrInput(sc, "Please enter a username to remove"));
 	}
 	
 	//Selecting user submenu
@@ -212,7 +212,7 @@ public class App {
 			try {
 				sc.nextLine();
 				System.out.println(prompt);
-				return sc.next();
+				return sc.nextLine();
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter a valid string");
 			}

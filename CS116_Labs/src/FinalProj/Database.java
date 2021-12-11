@@ -24,7 +24,7 @@ public class Database {
 	public User getUser(String usrName) {
 //		System.out.println("\'" + usrName + "\'");
 		return hash.entrySet().stream()
-			.filter(map -> map.getValue().getUsername() == usrName)
+			.filter(map -> map.getValue().getUsername().equals(usrName))
 			.findFirst().orElseThrow().getValue();
 	}
 	
@@ -50,9 +50,7 @@ public class Database {
 	}
 	
 	public void remUser(String usrName) {
-		hash.entrySet().stream()
-			.filter(map -> map.getValue().getUsername() == usrName)
-			.forEach(map -> this.remUser(map.getKey()));
+		hash.values().removeIf(usr -> usr.getUsername().equals(usrName));
 	}
 	
 	//String manipulations

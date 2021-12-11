@@ -95,7 +95,7 @@ public class Playlist {
 	}
 	
 	public void remRecord(String songName) {
-		this.recordList.removeIf(rec -> rec.getName().equalsIgnoreCase(songName));
+		this.recordList.removeIf(rec -> rec.getName().equals(songName));
 	}
 	
 	public void cpyPlaylist(Playlist other) {
